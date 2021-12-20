@@ -68,13 +68,9 @@ class _MyFormPageState extends State<Aes256GcmPbkdf2EncryptionRoute> {
     final arguments = {'password' : password,
       'iterations' : iterations,
       'plaintext' : plaintext};
-    final argumentsOld = {'password' : 'mein geheimes passwort',
-      'iterations' : '10001',
-      'plaintext' : 'Mein wichtiges Geheimnis'};
     try {
       final String result = await methodChannel.invokeMethod('aesGcmEnc', arguments);
       returnString = '$result';
-      print(returnString);
     } on PlatformException {
       returnString = 'Failed to get return string.';
     }
@@ -270,7 +266,6 @@ class _MyFormPageState extends State<Aes256GcmPbkdf2EncryptionRoute> {
                             String plaintext = plaintextController.text;
                             String password = passwordController.text;
                             String iterations = iterationenController.text;
-                            print('PT: ' + plaintext + ' iter: ' + iterations + ' pw: ' + password);
 
                             // aufruf des native code
                             String output = '';

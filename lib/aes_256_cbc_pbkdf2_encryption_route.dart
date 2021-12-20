@@ -6,7 +6,6 @@ class Aes256CbcPbkdf2EncryptionRoute extends StatefulWidget {
   const Aes256CbcPbkdf2EncryptionRoute({Key? key}) : super(key: key);
 
   final String title = 'CBC Verschlüsselung';
-  final String subtitle = 'AES-256 CBC PBKDF2';
 
   @override
   _MyFormPageState createState() => _MyFormPageState();
@@ -68,13 +67,9 @@ class _MyFormPageState extends State<Aes256CbcPbkdf2EncryptionRoute> {
     final arguments = {'password' : password,
       'iterations' : iterations,
       'plaintext' : plaintext};
-    final argumentsOld = {'password' : 'mein geheimes passwort',
-      'iterations' : '10001',
-      'plaintext' : 'Mein wichtiges Geheimnis'};
     try {
       final String result = await methodChannel.invokeMethod('aesCbcEnc', arguments);
       returnString = '$result';
-      print(returnString);
     } on PlatformException {
       returnString = 'Failed to get return string.';
     }
